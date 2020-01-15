@@ -1,0 +1,28 @@
+docker run -d \
+     --cap-add=NET_ADMIN \
+     -p 9080:9080 \
+     -p 9443:9443 \
+     -p 8118:8118 \
+     -p 3000:3000 \
+     -p 49160:49160\
+     -p 50030:50030\
+     --name=rutorrentvpn \
+     -v /opt/appdata/rutorrentvpn:/data \
+     -v /opt/appdata/rutorrentvpn/config:/config \
+     -v /etc/localtime:/etc/localtime:ro \
+     -e VPN_ENABLED=yes \
+     -e VPN_USER=p3514693 \
+     -e VPN_PASS=8uSRgB3gDE \
+     -e VPN_PROV=pia \
+     -e STRICT_PORT_FORWARD=yes \
+     -e ENABLE_PRIVOXY=yes \
+     -e ENABLE_FLOOD=no \
+     -e ENABLE_AUTODL_IRSSI=yes \
+     -e LAN_NETWORK=172.17.0.8/24 \
+     -e NAME_SERVERS=209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4 \
+     -e DEBUG=false \
+     -e PHP_TZ=Europe/London \
+     -e UMASK=000 \
+     -e PUID=1000 \
+     -e PGID=1000 \
+     binhex/arch-rtorrentvpn
